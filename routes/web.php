@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +16,19 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/profil', function () {
-    return view ('profil');
-});
+// Route::get('/profil', function () {
+//     return view ('profil');
+// });
 
 
-Route::get('/home', [PostController::class, 'index']);
+Auth::routes();
+
+Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/home', [PostController::class, 'index'])->name('home');
 Route::get('/createstts', [PostController::class, 'create']);
 Route::post('/saveblog', [PostController::class, 'store']);
 Route::get('/edit/{id}', [PostController::class, 'edit']);
