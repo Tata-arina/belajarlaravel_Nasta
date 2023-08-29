@@ -24,7 +24,7 @@
             <i class="bi bi-three-dots"></i>
           </button>
             <ul class="dropdown-menu">
-              @if (Auth::user()->id === $posts->users_id)
+              @if (Auth::user()->id === $post->users_id)
               <li><a class="dropdown-item" href="/edit/{{ $post->id}}">Edit</a></li>
               <li><a class="dropdown-item" href="/delete/{{ $post->id}}">Delete</a></li>
               @else
