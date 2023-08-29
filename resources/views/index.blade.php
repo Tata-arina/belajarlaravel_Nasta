@@ -24,13 +24,17 @@
             <i class="bi bi-three-dots"></i>
           </button>
             <ul class="dropdown-menu">
+              @if (Auth::user()->id === $posts->users_id)
               <li><a class="dropdown-item" href="/edit/{{ $post->id}}">Edit</a></li>
               <li><a class="dropdown-item" href="/delete/{{ $post->id}}">Delete</a></li>
+              @else
+              <li><a class="dropdown-item" href="">Bagikan</a></li>
+              @endif
             </ul>
         </div>
               <h5 class="card-title fw-bold">{{ $post->judul_post }}</h5>
             <p class="card-text">{{ $post->isi_post }}</p>
-            <p class="card-text"><small class="text-body-secondary">{{ $post->penulis_post }} </small> <a href="" class="btn"><i class="bi bi-heart"></i> like</a> <a href="" class="btn"><i class="bi bi-chat-text"></i>Comment</a></p>
+            <p class="card-text"><small class="text-body-secondary">{{ $post->users['name'] }} </small> <a href="" class="btn"><i class="bi bi-heart"></i> like</a> <a href="" class="btn"><i class="bi bi-chat-text"></i>Comment</a></p>
       </div>
     </div>
   </div>
@@ -40,4 +44,3 @@
     </section>
 
 @endsection
-

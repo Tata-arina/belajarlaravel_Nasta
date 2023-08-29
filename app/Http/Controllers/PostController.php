@@ -51,7 +51,7 @@ class PostController extends Controller
         $path = $file->storeAs('uploads', time() .'.' . $request->file('gambar_post')->extension());
 
         $post = new Post;
-        $post->penulis_post = $request['penulis_post'];
+        $post->users_id = $request['penulis_post'];
         $post->judul_post = $request['judul_post'];
         $post->isi_post = $request['isi_post'];
         $post->gambar_post = $path;
@@ -100,7 +100,7 @@ class PostController extends Controller
         }
         
         $post = Post::find($id);
-        $post->penulis_post = $request['penulis_post'];
+        $post->users_id = $request['penulis_post'];
         $post->judul_post = $request['judul_post'];
         $post->isi_post = $request['isi_post'];
         $post->gambar_post = $path;
